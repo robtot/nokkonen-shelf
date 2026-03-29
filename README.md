@@ -16,7 +16,7 @@ To start dev backend locally:
 3) cd ./NokkonenShelfApi
 4) cargo run
 
-To dev frontend locally:
+To start dev frontend locally:
 1) cd {NokkonenShelf root folder (where this readme is)}/NokkonenShelfApp
 2) npm run dev
 
