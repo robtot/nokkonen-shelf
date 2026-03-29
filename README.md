@@ -14,11 +14,10 @@ To start dev backend locally:
 1) cd {NokkonenShelf root folder (where this readme is)}
 2) docker-compose up -d
 3) cd ./NokkonenShelfApi
-4) cargon run
+4) cargo run
 
 To dev frontend locally:
-1) cd {NokkonenShelf root folder (where this readme is)}
-2) cd ./NokkonenShelfApp
-3) npm run dev
+1) cd {NokkonenShelf root folder (where this readme is)}/NokkonenShelfApp
+2) npm run dev
 
 Once you have ran these, you should have backend listening on localhost:3000 and frontend listening on localhost:5173.
