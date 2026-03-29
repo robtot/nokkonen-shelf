@@ -1,0 +1,30 @@
+[package]
+name = "nokkonenshelfapi"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = { version = "0.8", features = ["macros"] }
+tokio = { version = "1", features = ["full"] }
+sqlx = { version = "0.8", features = ["runtime-tokio", "postgres", "uuid", "chrono", "migrate"] }
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+dotenvy = "0.15"
+uuid = { version = "1", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+oauth2 = "4"
+reqwest = { version = "0.12", features = ["json"] }
+axum-extra = { version = "0.10", features = ["cookie-private"] }
+anyhow = "1"
+aide = { version = "0.14", features = ["axum", "axum-json", "scalar"] }
+schemars = { version = "0.8", features = ["uuid1", "chrono"] }
+
+[dev-dependencies]
+cookie = { version = "0.18", features = ["private"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+sqlx = { version = "0.8", features = ["runtime-tokio", "postgres", "uuid", "chrono"] }
+tower = { version = "0.5", features = ["util"] }

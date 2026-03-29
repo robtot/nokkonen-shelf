@@ -1,0 +1,849 @@
+/* ── Layout ─────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  background-color: #3b2a1a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Edit toolbar ────────────────────────────────────── */
+.edit-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 32px;
+  background-color: #2e1e0e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.edit-toolbar__swatches {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-toolbar__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: rgba(245, 230, 200, 0.45);
+  margin-right: 4px;
+}
+
+.edit-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-header__title {
+  font-family: 'Georgia', serif;
+  font-size: 1.6rem;
+  color: #f5e6c8;
+  letter-spacing: 1px;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 32px 32px;
+  gap: 32px;
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  transition: background-color 0.15s, opacity 0.15s;
+}
+
+.btn--primary {
+  background-color: #c0392b;
+  color: #fff;
+}
+.btn--primary:hover {
+  background-color: #a93226;
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: #555;
+  border: 1px solid #ccc;
+}
+.btn--ghost:hover {
+  background-color: #eee;
+}
+
+.btn--danger {
+  background-color: #c0392b;
+  color: #fff;
+}
+.btn--danger:hover {
+  background-color: #a93226;
+}
+
+.btn--danger-outline {
+  background-color: transparent;
+  color: rgba(231, 76, 60, 0.85);
+  border: 1px solid rgba(231, 76, 60, 0.45);
+}
+.btn--danger-outline:hover:not(:disabled) {
+  background-color: rgba(231, 76, 60, 0.12);
+  color: #e74c3c;
+  border-color: rgba(231, 76, 60, 0.7);
+}
+.btn--danger-outline:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btn--ghost-light {
+  background-color: transparent;
+  color: rgba(245, 230, 200, 0.8);
+  border: 1px solid rgba(245, 230, 200, 0.35);
+}
+.btn--ghost-light:hover {
+  background-color: rgba(245, 230, 200, 0.1);
+  color: #f5e6c8;
+}
+
+/* ── Header actions group ────────────────────────────── */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bookcase-counter {
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  color: rgba(245, 230, 200, 0.5);
+  min-width: 32px;
+  text-align: center;
+}
+
+/* ── Theme swatches (used inside edit toolbar) ───────── */
+
+/* ── Bookcase wrapper + title ────────────────────────── */
+.bookcase-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.bookcase-title-row {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookcase-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.15rem;
+  font-weight: normal;
+  color: #7a6045;
+  letter-spacing: 0.5px;
+  cursor: text;
+  border-bottom: 1px dashed transparent;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.bookcase-title:hover {
+  color: #4a3020;
+  border-bottom-color: #b8975a;
+}
+
+.bookcase-title-input {
+  font-family: 'Georgia', serif;
+  font-size: 1.15rem;
+  color: #4a3020;
+  text-align: center;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid #b8975a;
+  outline: none;
+  padding: 2px 6px;
+  min-width: 160px;
+  width: auto;
+}
+
+/* ── Bookcase navigator (arrows + bookcase) ──────────── */
+.bookcase-navigator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.nav-arrow {
+  flex-shrink: 0;
+  width: 40px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #c8a870;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-arrow:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #f5e6c8;
+  transform: scale(1.05);
+}
+
+.nav-arrow:active {
+  transform: scale(0.97);
+}
+
+/* ── Bookcase frame ──────────────────────────────────── */
+.bookcase {
+  width: 100%;
+  flex: 1;
+  background: linear-gradient(175deg, var(--case-back-start) 0%, var(--case-back-end) 100%);
+  border-left: 32px solid var(--case-frame);
+  border-right: 32px solid var(--case-frame);
+  border-top: 20px solid var(--case-top);
+  border-bottom: 48px solid var(--case-base);
+  border-radius: 3px;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.5),
+    inset 4px 0 10px rgba(0, 0, 0, 0.25),
+    inset -4px 0 10px rgba(0, 0, 0, 0.25),
+    inset 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.35s, border-color 0.35s;
+}
+
+/* ── Shelf area (stacked shelves, no gap) ────────────── */
+.shelf-area {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── Shelf ───────────────────────────────────────────── */
+.shelf-wrapper {
+  width: 100%;
+}
+
+.shelf {
+  position: relative;
+  padding: 14px 16px 0;
+  min-height: 220px;
+}
+
+.shelf__books {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  min-height: 200px;
+  padding-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.shelf__plank {
+  height: 22px;
+  background: linear-gradient(180deg, var(--plank-light) 0%, var(--plank-mid) 40%, var(--plank-dark) 90%, var(--case-frame) 100%);
+  margin: 0 -16px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.45);
+  transition: background 0.35s;
+}
+
+/* ── Drag overlay book ───────────────────────────────── */
+.book--dragging .book__spine {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  transform: translateY(-8px) rotate(2deg);
+}
+
+/* ── Edit mode shelf controls ────────────────────────── */
+.shelf__edit-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2px 6px;
+  gap: 8px;
+}
+
+.shelf__label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.5px;
+}
+
+.shelf__remove-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(231, 76, 60, 0.7);
+  color: #fff;
+  font-size: 0.65rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s, opacity 0.15s;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.shelf__remove-btn:hover:not(:disabled) {
+  background: rgba(192, 57, 43, 0.9);
+}
+
+.shelf__remove-btn:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Add shelf button (inside bookcase) ──────────────── */
+.add-shelf-btn {
+  width: 100%;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: 'Georgia', serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.add-shelf-btn:hover {
+  background: rgba(255, 255, 255, 0.13);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── Book spine ──────────────────────────────────────── */
+.book {
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+  touch-action: none;
+  position: relative;
+}
+
+.book__tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(25, 15, 5, 0.93);
+  color: #f5e6c8;
+  padding: 7px 11px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 50;
+}
+
+.book__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(25, 15, 5, 0.93);
+}
+
+.book__tooltip-title {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #f5e6c8;
+}
+
+.book__tooltip-author {
+  font-size: 0.72rem;
+  color: rgba(245, 230, 200, 0.65);
+  font-style: italic;
+}
+
+.book:hover .book__tooltip {
+  opacity: 1;
+}
+
+.book__spine {
+  width: 36px;
+  border-radius: 2px 0 0 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 4px;
+  box-shadow: inset -3px 0 6px rgba(0, 0, 0, 0.25), 2px 0 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.book:hover .book__spine {
+  transform: translateY(-6px);
+  box-shadow: inset -3px 0 6px rgba(0, 0, 0, 0.25), 2px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.book--selected .book__spine {
+  transform: translateY(-10px);
+  box-shadow: inset -3px 0 6px rgba(0, 0, 0, 0.25), 0 6px 16px rgba(0, 0, 0, 0.4);
+  outline: 2px solid #f5e6c8;
+  outline-offset: 1px;
+}
+
+.book__title {
+  font-size: 0.55rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.92);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  text-align: center;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  max-height: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book__author {
+  font-size: 0.45rem;
+  color: rgba(255, 255, 255, 0.65);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  text-align: center;
+  letter-spacing: 0.3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-height: 30%;
+}
+
+/* ── Book details modal ──────────────────────────────── */
+.book-details-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.book-details {
+  width: 100%;
+  max-width: 480px;
+  margin: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: #fff;
+}
+
+.book-details__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.book-details__title {
+  font-size: 1.3rem;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.book-details__close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.15s;
+}
+.book-details__close:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.book-details__body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.book-details__author {
+  font-style: italic;
+  color: #555;
+  font-size: 1rem;
+}
+
+.book-details__year {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.book-details__description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.book-details__link {
+  font-size: 0.9rem;
+  color: #2980b9;
+  text-decoration: none;
+}
+.book-details__link:hover {
+  text-decoration: underline;
+}
+
+.book-details__move {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.book-details__move-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #999;
+}
+
+.book-details__move-selects {
+  display: flex;
+  gap: 8px;
+}
+
+.book-details__move-select {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 0.88rem;
+}
+
+.book-details__move-btn {
+  align-self: flex-end;
+  padding: 6px 18px;
+  font-size: 0.88rem;
+}
+
+.book-details__footer {
+  padding-top: 4px;
+}
+
+.book-details__remove {
+  margin-top: 8px;
+  align-self: flex-start;
+  background: none;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  padding: 6px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  transition: background-color 0.15s, color 0.15s;
+}
+.book-details__remove:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.theme-swatch {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.theme-swatch:hover {
+  transform: scale(1.2);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.theme-swatch--active {
+  border-color: #f5e6c8;
+  box-shadow: 0 0 0 2px rgba(245, 230, 200, 0.4);
+  transform: scale(1.25);
+}
+
+/* ── Auth loading ────────────────────────────────────── */
+.app-loading {
+  min-height: 100vh;
+  background-color: #1a1008;
+}
+
+/* ── Landing page ────────────────────────────────────── */
+.landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #1a1008 0%, #2e1e0e 100%);
+}
+
+.landing__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 56px 48px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(245, 230, 200, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.landing__logo {
+  font-family: 'Georgia', serif;
+  font-size: 2.6rem;
+  font-weight: normal;
+  color: #f5e6c8;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.landing__tagline {
+  font-size: 1rem;
+  color: rgba(245, 230, 200, 0.5);
+  margin: 0 0 16px;
+  letter-spacing: 0.3px;
+}
+
+.landing__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 24px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.15s, transform 0.1s;
+  cursor: pointer;
+  min-width: 260px;
+}
+
+.login-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+.login-btn__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.login-btn--google {
+  background: #fff;
+  color: #3c4043;
+  border: 1px solid #dadce0;
+}
+
+.login-btn--github {
+  background: #24292e;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ── Header user info ────────────────────────────────── */
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 6px;
+  border-left: 1px solid rgba(245, 230, 200, 0.15);
+  margin-left: 4px;
+}
+
+.header-user__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(245, 230, 200, 0.2);
+}
+
+.header-user__name {
+  font-size: 0.85rem;
+  color: rgba(245, 230, 200, 0.65);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Add book modal ──────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 440px;
+  margin: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  background: #3b2a1a;
+}
+
+.modal__header h2 {
+  color: #f5e6c8;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.modal__header--danger {
+  background: #922b21;
+}
+
+.confirm-modal__message {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.modal__close {
+  background: none;
+  border: none;
+  color: rgba(245, 230, 200, 0.75);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.15s;
+}
+.modal__close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal__form {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.modal__optional {
+  font-size: 0.8rem;
+  color: #999;
+  font-style: italic;
+}
+
+.modal__required {
+  color: #e74c3c;
+}
+
+.modal__input {
+  border: 1px solid #d0c8be;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #333;
+  background: #faf8f5;
+  transition: border-color 0.15s;
+  outline: none;
+}
+.modal__input:focus {
+  border-color: #8b6344;
+}
+
+.modal__error {
+  font-size: 0.85rem;
+  color: #e74c3c;
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 4px;
+}
